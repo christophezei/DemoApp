@@ -13,7 +13,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class tab1Fragment extends Fragment {
+public class Tab1Fragment extends Fragment {
     private ActionListener actionListener;
 
     @Override
