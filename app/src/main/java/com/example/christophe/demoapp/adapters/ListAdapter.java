@@ -1,6 +1,7 @@
 package com.example.christophe.demoapp.adapters;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.christophe.demoapp.R;
 import com.example.christophe.demoapp.models.Person;
@@ -66,6 +68,12 @@ public class ListAdapter extends RecyclerView.Adapter {
 
         @Override
         public void onClick(View v) {
+            Toast.makeText(context,"You clicked on: "+nameTv.getText().toString(),Toast.LENGTH_LONG).show();
+            SharedPreferences namePrevSelected;
+            namePrevSelected=context.getSharedPreferences("SaveName", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor=namePrevSelected.edit();
+            editor.putString("Value",nameTv.getText().toString());
+            editor.apply();
 
         }
     }

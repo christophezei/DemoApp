@@ -33,12 +33,12 @@ public class tab2Fragment extends Fragment {
         chris.setPersonAddress("Kaslik");
         chris.setImageUrl("http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Labrador-Retriever-2.jpg");
 
-        roudy.setPersonName("Chris");
-        roudy.setPersonAddress("Kaslik");
+        roudy.setPersonName("Roudy");
+        roudy.setPersonAddress("Beirut");
         roudy.setImageUrl("http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Labrador-Retriever-2.jpg");
 
-        adam.setPersonName("Chris");
-        adam.setPersonAddress("Kaslik");
+        adam.setPersonName("Adam");
+        adam.setPersonAddress("Beirut");
         adam.setImageUrl("http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Labrador-Retriever-2.jpg");
 
         ArrayList<Person> personList = new ArrayList<>();
