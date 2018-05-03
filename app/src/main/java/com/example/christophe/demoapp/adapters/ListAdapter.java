@@ -14,14 +14,14 @@ import com.example.christophe.demoapp.models.Person;
 import com.example.christophe.demoapp.utils.LoadImage;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter {
     private Context context;
     private ArrayList<Person> personList;
 
-    public ListAdapter(Context context) {
+    public ListAdapter(Context context, ArrayList<Person> personList) {
         this.context = context;
+        this.personList = personList;
     }
 
     @NonNull
@@ -38,68 +38,31 @@ public class ListAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return 1;
+        return this.personList == null ? 0 : this.personList.size();
     }
-
-    TextView name;
-    TextView address;
-    ImageView personImage;
 
 
     private class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private TextView nameTv;
+        private TextView addressTv;
+        private ImageView personIv;
 
-        public ListViewHolder(View itemView) {
+        private ListViewHolder(View itemView) {
             super(itemView);
-
-            name = (TextView) itemView.findViewById(R.id.textViewName);
-            address = (TextView) itemView.findViewById(R.id.Address);
-            personImage = (ImageView) itemView.findViewById(R.id.imagePerson);
-
+            nameTv = itemView.findViewById(R.id.textViewName);
+            addressTv = itemView.findViewById(R.id.Address);
+            personIv = itemView.findViewById(R.id.imagePerson);
             itemView.setOnClickListener(this);
         }
 
 
-        public void bindView(int position) {
-
-            Person chris=new Person();
-            Person roudy=new Person();
-            Person adam=new Person();
-
-            chris.setPersonName("Chris");
-            chris.setPersonAddress("Kaslik");
-            chris.setImageUrl("http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Labador-Retriever-2.jpg");
-
-           /* roudy.setPersonName("Adam");
-            roudy.setPersonAddress("Beirut");
-            roudy.setImageUrl("null");
-
-            adam.setPersonName("Adam");
-            adam.setPersonAddress("Beirut");
-            adam.setImageUrl("null");
-
-
-
-
-            LoadImage imageRoudy = new LoadImage();
-            imageRoudy.loadImageByinternetUrl(context, chris.getImageUrl(), personImage);
-
-            LoadImage imageAdam = new LoadImage();
-            imageAdam.loadImageByinternetUrl(context, chris.getImageUrl(), personImage);*/
-
-
-
-            /*personList.add(chris);
-            personList.add(roudy);
-            personList.add(adam);*/
-
-            name.setText(chris.getPersonName());
-            address.setText(chris.getPersonAddress());
-            LoadImage imageChris = new LoadImage();
-            imageChris.loadImageByinternetUrl(context, chris.getImageUrl(), personImage);
-
-
-
+        private void bindView(int position) {
+            Person person = personList.get(position);
+            this.nameTv.setText(person.getPersonName());
+            this.addressTv.setText(person.getPersonAddress());
+            new LoadImage().loadImageByinternetUrl(context, person.getImageUrl(), this.personIv);
         }
+
 
         @Override
         public void onClick(View v) {
